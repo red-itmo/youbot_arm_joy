@@ -1,0 +1,14 @@
+<!---->
+<launch>
+
+    <arg name="dev" default="/dev/input/js1"/>
+
+    <include file="$(find youbot_driver_ros_interface)/launch/youbot_driver_only_arm.launch" />
+
+    <node pkg="joy" type="joy_node" name="joy_node" output="screen">
+            <param name="dev" value="$(arg dev)"/>
+    </node>
+
+    <node pkg="youbot_arm_joy" type="joystick_control" name="joystick_control" output="screen"/>
+
+</launch>

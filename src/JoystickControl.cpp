@@ -41,7 +41,6 @@ void JoystickControl::jointStateCallback(const sensor_msgs::JointState& msg){
         char digit[2];
         std::sprintf(digit, "%d", i+1);
         value.joint_uri = "arm_joint_" + std::string(digit);
-        ROS_INFO_STREAM(value.joint_uri);
         if(((arm_state_max[i] -  arm_state[i] < safe_angle) && (arm_direction[i] == 1)) ||
             (( arm_state[i] - arm_state_min[i] < safe_angle) && (arm_direction[i] == -1)))
                 arm_velocities.velocities.push_back(value);
